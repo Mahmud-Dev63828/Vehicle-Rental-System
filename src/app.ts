@@ -1,14 +1,21 @@
 import express, { Request, Response } from "express";
 import config from "./config";
 import initDB from "./config/db";
+import { authRoutes } from "./modules/auth/auth.routes";
+import { userRoutes } from "./modules/user/user.routes";
 
 const app = express();
 // parser
 app.use(express.json());
-// app.use(express.urlencoded());
 
 // initializing DB
 initDB();
+
+//users CRUD
+app.use("/api/v1", userRoutes);
+
+//auth routes
+app.use("/api/v1", authRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
