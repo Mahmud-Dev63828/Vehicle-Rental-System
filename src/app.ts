@@ -3,6 +3,7 @@ import config from "./config";
 import initDB from "./config/db";
 import { authRoutes } from "./modules/auth/auth.routes";
 import { userRoutes } from "./modules/user/user.routes";
+import { vehicleRoutes } from "./modules/vehicles/vehicles.routes";
 
 const app = express();
 // parser
@@ -16,6 +17,8 @@ app.use("/api/v1", userRoutes);
 
 //auth routes
 app.use("/api/v1", authRoutes);
+
+app.use("/api/v1", vehicleRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
