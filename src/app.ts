@@ -4,6 +4,7 @@ import initDB from "./config/db";
 import { authRoutes } from "./modules/auth/auth.routes";
 import { userRoutes } from "./modules/user/user.routes";
 import { vehicleRoutes } from "./modules/vehicles/vehicles.routes";
+import { bookingRoutes } from "./modules/booking/bookings.routes";
 
 const app = express();
 // parser
@@ -20,6 +21,7 @@ app.use("/api/v1", authRoutes);
 
 app.use("/api/v1", vehicleRoutes);
 
+app.use("/api/v1", bookingRoutes);
 app.use((req, res) => {
   res.status(404).json({
     success: false,
